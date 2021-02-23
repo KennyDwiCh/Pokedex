@@ -36,11 +36,11 @@ class _HomepageState extends State<Homepage> {
 
   Future<List> getPokemon() async {
     var response =
-        await Dio().get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=150');
+        await Dio().get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=151');
     setState(() {
       var decodedJson = response.data;
       pokemons = Pokemons.fromJson(decodedJson);
-      for (var i = 0; i < 150; i++) {
+      for (var i = 0; i < 151; i++) {
         results = pokemons.results[i];
         String name = results.name;
         as.insert(i, name.toUpperCase());
@@ -95,7 +95,7 @@ class _HomepageState extends State<Homepage> {
               if (snapshot.hasData) {
                 print(snapshot.data);
                 return ListView.builder(
-                  itemCount: 150,
+                  itemCount: 151,
                     itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
